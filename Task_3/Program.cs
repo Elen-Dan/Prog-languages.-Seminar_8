@@ -21,9 +21,9 @@ else
             Array[i, j] = new Random().Next(1, 100);
             
             
-            for  (int k = 0; k < rows; k++)
+            for  (int k = 1; k < rows; k++)
             {
-                for (int l = 0; l < cols; l++)
+                for (int l = 1; l < cols; l++)
                 {
                     if (Array[i, j] == Array[k, l])
                             Array[i, j] = new Random().Next(1, 100);

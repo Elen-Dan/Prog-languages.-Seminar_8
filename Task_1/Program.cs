@@ -30,28 +30,32 @@ for (int i = 0; i < Num1; i++)
     Console.WriteLine();
 }
 
-int sum = 0;
-int n = 0;
-int[] SumArray = new int[Num1];
-for (int k = 0; k < Num1; k++)
-{
-    sum = 0;
-    n = 0;
-    while (n < Num2)
+int k = 0;
+int[] tmpArray = new int[Num2];
+while  (k < Array.GetLength(0))
     {
-        SumArray[n] = sum + Array[k, n];
-        n++;
+    int SumString = 0;
+    for (int l = 0; l < Array.GetLength(1); l++)
+        {
+            SumString = SumString + Array[k, l];
+            tmpArray[l] =  SumString; //заносим сумму строк во временный одномерный массив
+        }
+        Console.WriteLine(SumString); //для проверки суммы строк
+                              
+    k++;
     }
-}            
 
-int min = SumArray[0];
-for (int l = 0; l < SumArray.Length; l++)
+
+int minSumString = tmpArray[0];
+int numString = 0;
+for (int m = 0; m < tmpArray.Length; m++)
     {
-        if (min > SumArray[l]) 
+        if (minSumString < tmpArray[m])
             {
-                min =  SumArray[l];
+                minSumString = tmpArray[m];
+                numString++;
             }
-        else 
-             Console.WriteLine($"Строка с наименьшей суммой элементов: {l}");   
+    
     }
+   Console.WriteLine($"Строка с наименьшей суммой элементов: {numString}");
 

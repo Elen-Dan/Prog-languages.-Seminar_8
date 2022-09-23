@@ -40,7 +40,7 @@ while  (k < Array.GetLength(0))
             SumString = SumString + Array[k, l];
             tmpArray[l] =  SumString; //заносим сумму строк во временный одномерный массив
         }
-        Console.WriteLine(SumString); //для проверки суммы строк
+        Console.WriteLine(SumString); //выводим для проверки суммы строк
                               
     k++;
     }

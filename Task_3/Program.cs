@@ -19,15 +19,21 @@ else
         for (int j = 0; j < cols; j++)
         {
             Array[i, j] = new Random().Next(1, 100);
-            for (int k = 0; k<Array.GetLength(0); k++)
+            
+            
+            for  (int k = 0; k < rows; k++)
+            {
+                for (int l = 0; l < cols; l++)
                 {
-                    for (int l = 0; l < Array.GetLength(1); l++)
-                        {
-                            if (Array[i, j] == Array[k, l])
+                    if (Array[i, j] == Array[k, l])
                             Array[i, j] = new Random().Next(1, 100);
-                        }
                 }
-            Console.Write($"{Array[i, j]} "); //вывод значений массива для примера
+            }
+        Console.Write($"{Array[i, j]} "); //вывод значений массива для примера
         }
-        Console.WriteLine();
+
+    Console.WriteLine();    
+
     }
+   
+

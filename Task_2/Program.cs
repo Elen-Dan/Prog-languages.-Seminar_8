@@ -11,8 +11,8 @@
 Console.Clear();
 Console.WriteLine("Введите количество строк матрицы: ");
 int rows = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите количество столбцов матрицы: ");
-int columns = Convert.ToInt32(Console.ReadLine());
+//Console.WriteLine("Введите количество столбцов матрицы: ");
+int columns = rows;
 
 int[,] matrix1 = new int[rows, columns];
 int[,] matrix2 = new int[rows, columns];
@@ -33,6 +33,7 @@ MultiplicateMatrix(matrix1, matrix2);
 
 int[,] MultiplicateMatrix(int[,] matrix1, int[,] matrix2)
 {   
+    
     int temp = 0;
         
     for (int i = 0; i < matrix1.GetLength(0); i++)
@@ -47,10 +48,11 @@ int[,] MultiplicateMatrix(int[,] matrix1, int[,] matrix2)
                 EndMatrix[i , j] = temp;
             }
     }
+    
     return EndMatrix;
 }
 
-for (int i = 0; i < EndMatrix.GetLength(0); i++)
+    for (int i = 0; i < EndMatrix.GetLength(0); i++)
     {
         for (int j = 0; j < EndMatrix.GetLength(1); j++)
             {
@@ -58,3 +60,4 @@ for (int i = 0; i < EndMatrix.GetLength(0); i++)
             }
     Console.WriteLine();
     }
+   

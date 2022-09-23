@@ -21,14 +21,14 @@ else
             Array[i, j] = new Random().Next(1, 100);
             
             
-            for  (int k = 1; k < rows; k++)
-            {
+            //for  (int k = 1; k < rows; k++)
+           // {
                 for (int l = 1; l < cols; l++)
                 {
-                    if (Array[i, j] == Array[k, l])
-                            Array[i, j] = new Random().Next(1, 100);
+                    if (Array[i, j] == Array[i, l])
+                            Array[i, l] = new Random().Next(1, 100);
                 }
-            }
+            //}
         Console.Write($"{Array[i, j]} "); //вывод значений массива для примера
         }
 

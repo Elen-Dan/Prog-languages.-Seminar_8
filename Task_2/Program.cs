@@ -11,7 +11,6 @@
 Console.Clear();
 Console.WriteLine("Введите количество строк матрицы: ");
 int rows = Convert.ToInt32(Console.ReadLine());
-//Console.WriteLine("Введите количество столбцов матрицы: ");
 int columns = rows;
 
 int[,] matrix1 = new int[rows, columns];
@@ -23,41 +22,39 @@ for (int i = 0; i < matrix1.GetLength(0); i++)
 {
     for (int j = 0; j < matrix1.GetLength(1); j++)
         {
-          matrix1[i, j] = new Random().Next(1, 100);
-          matrix2[i, j] = new Random().Next(1, 100);
-           //Console.Write($"{Array[i, j]} "); //вывод значений массива для примера
+            matrix1[i, j] = new Random().Next(1, 100);
+            matrix2[i, j] = new Random().Next(1, 100);
+            Console.Write(matrix1[i, j] + " "); //вывод значений массива для примера
+            Console.Write(matrix2[i, j] + " ");
         }
-            //Console.WriteLine();
+            Console.WriteLine(" ");
 }
-MultiplicateMatrix(matrix1, matrix2);
+MultiplicateMatrix(matrix1, matrix2, EndMatrix);
 
-int[,] MultiplicateMatrix(int[,] matrix1, int[,] matrix2)
+void MultiplicateMatrix(int[,] matrix1, int[,] matrix2, int[,] EndMatrix)
 {   
-    
-    int temp = 0;
-        
-    for (int i = 0; i < matrix1.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix2.GetLength(1); j++)
-            {
-                temp = 0;
-                for (int k = 0; k < matrix1.GetLength(1); k++)
-                    {
-                        temp = temp + matrix1[i, k] * matrix2[k , j];
-                    }
-                EndMatrix[i , j] = temp;
-            }
-    }
-    
-    return EndMatrix;
-}
-
     for (int i = 0; i < EndMatrix.GetLength(0); i++)
     {
         for (int j = 0; j < EndMatrix.GetLength(1); j++)
-            {
-            Console.WriteLine(EndMatrix[i, j]);
+            {   
+                int tempsum = 0;
+                for (int k = 0; k < matrix1.GetLength(1); k++)
+                    {
+                        tempsum = tempsum + matrix1[i, k] * matrix2[k , j];
+                    }
+                EndMatrix[i, j] = tempsum;
             }
+    }
+}
+Console.WriteLine("- - - - - - - - - ");
+Console.WriteLine("Результат перемножения двух матриц:");
+Console.WriteLine("- - - - - - - - - ");
+for (int i = 0; i < EndMatrix.GetLength(0); i++)
+    {
+    for (int j = 0; j < EndMatrix.GetLength(1); j++)
+        {
+               Console.Write(EndMatrix[i, j] + " ");
+        }
     Console.WriteLine();
     }
    

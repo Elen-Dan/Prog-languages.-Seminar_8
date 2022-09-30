@@ -12,50 +12,43 @@
 */
 Console.Clear();
 Console.WriteLine("Введите количество строк: ");
-int Num1 = Convert.ToInt32(Console.ReadLine());
+int rows = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите количество столбцов: ");
-int Num2 = Convert.ToInt32(Console.ReadLine());
+int cols = Convert.ToInt32(Console.ReadLine());
 
 
-int[,] Array = new int[Num1, Num2];
+int[,] Array = new int[rows, cols];
 
-for (int i = 0; i < Num1; i++)
+for (int i = 0; i < rows; i++)
 {
-    for (int j = 0; j < Num2; j++)
+    for (int j = 0; j < cols; j++)
     {
         Array[i, j] = new Random().Next(1, 100);
         Console.Write($"{Array[i, j]} "); //вывод значений массива для примера
-
     }
     Console.WriteLine();
 }
 
-int k = 0;
-int[] tmpArray = new int[Num2];
-while  (k < Array.GetLength(0))
-    {
-    int SumString = 0;
-    for (int l = 0; l < Array.GetLength(1); l++)
-        {
-            SumString = SumString + Array[k, l];
-            tmpArray[l] =  SumString; //заносим сумму строк во временный одномерный массив
-        }
-        Console.WriteLine(SumString); //выводим для проверки суммы строк
-                              
-    k++;
-    }
+int minSumRow = 0;
+int sumLine = SumRowElements(Array, 0);
+for (int i = 1; i < Array.GetLength(0); i++)
+{
+  int tempSumLine = SumRowElements(Array, i);
+  if (sumLine > tempSumLine)
+  {
+    sumLine = tempSumLine;
+    minSumRow = i;
+  }
+}
 
+Console.WriteLine($"\n{minSumRow+1} - строкa с наименьшей суммой элементов ({sumLine})");
 
-int minSumString = tmpArray[0];
-int numString = 0;
-for (int m = 0; m < tmpArray.Length; m++)
-    {
-        if (minSumString < tmpArray[m])
-            {
-                minSumString = tmpArray[m];
-                numString++;
-            }
-    
-    }
-   Console.WriteLine($"Строка с наименьшей суммой элементов: {numString}");
-
+int SumRowElements(int[,] array, int i)
+{
+  int sumRow = array[i,0];
+  for (int j = 1; j < array.GetLength(1); j++)
+  {
+    sumRow += array[i,j];
+  }
+  return sumRow;
+}
